@@ -21,6 +21,10 @@ void Simulation::MakeInitFile(){
   //const double Tm=FLAGS_Tm;
   //const double H=FLAGS_H;
   //さぶい
+  
+  //ほげほげ
+  
+  
   if(FLAGS_v) ShowVerticesAllNum();
   int tmax = static_cast<int>(FLAGS_Tm/FLAGS_H);
   bool ADD=true;
