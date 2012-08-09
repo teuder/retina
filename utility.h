@@ -667,6 +667,47 @@ void sequence(T s,T se){
 
 
 
+//★[0,N] の整数列を返す
+template<typename T> 
+inline vector<int> seqZN(int N) {
+  
+  vector<int> S(N+1);
+  auto s=S.begin();
+  int i=0;
+  while(i!=N+1){
+    *(s++)=(i++);
+  }
+  return(S);
+}
+
+//★[0,N-1] の整数列を返す
+template<typename T> 
+inline vector<int> seqZN_1(int N) {
+  
+  vector<int> S(N);
+  auto s=S.begin();
+  int i=0;
+  while(i!=N){
+    *(s++)=(i++);
+  }
+  return(S);
+}
+
+
+inline vector<int> seq(int N) {
+  
+  vector<int> S(N);
+  auto s=S.begin();
+  int i=0;
+  while(i!=N){
+    *(s++)=(i++);
+  }
+  return(S);
+}
+
+
+
+
 //★イテレータで渡された、範囲のシーケンスコンテナに対する処理
 
 //総和

@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <fstream>
-
+#include <map>
 
 #include "./SFMT/SFMT.h"
 
@@ -127,6 +127,14 @@ extern bool TFrand();
 extern double P1orM1rand();
 
 
+//-1以上1以下の乱数を生成する
+inline double MP1rand(void)
+{
+	return (2*(genrand()*(1.0/myrand::MAX))-1.0);
+}
+
+
+
 //-n から n の間の整数の乱数 
 int iMPNrand(int n);
 
@@ -139,6 +147,12 @@ double dMPNrand(T n)
 
 
 //[n,m]の実数乱数
+template<typename T>
+double NMrand(T n,T m)
+{
+  return((m-n)*ZP1rand()+n);
+}
+
 template<typename T>
 double dNMrand(T n,T m)
 {
@@ -157,26 +171,85 @@ inline int iNMrand(int n,int m)
 
 
 //標準正規乱数
-extern double NormRand();
-
-//平均値mu、標準偏差sigmaの正規分布
-template<typename T1,typename T2>
-double NormRand(T1 mu, T2 sigma)
+//標準正規乱数
+inline double NormRand()
 {
-  return(sigma*NormRand()+mu);
+	double t=sqrt(-2.0 * log(1-Zp1rand()));
+	double u=myrand::PI*2.0*Zp1rand();
+	return(t*cos(u));
 }
 
 
+//一般的な平均値mu、標準偏差sigmaの正規分布をする乱数
+//これは標準正規乱数を利用して作る
+//一般正規分布f(x)があったとき
+//xを変数変換し
+//z = (x - mu)/sigma
+//として得られる分布g(z)は標準正規分布となる
+//つまり、これを逆変換すると
+//x = sigma*x + mu
+//であり
+//標準正規分布を一般正規分布に変換できる
+inline double NormRand(double mu, double sigma)
+{
+	return(sigma*NormRand()+mu);
+}
+
+//平均値mu、標準偏差sigmaの正規分布
+//template<typename T1,typename T2>
+//double NormRand(T1 mu, T2 sigma)
+//{
+  //return(sigma*NormRand()+mu);
+//}
+
+
+
+
 //平均値lambdaのポワソン乱数（整数）を返す関数
-extern int p_rand(double lambda);
+//平均値lambdaのポワソン乱数（整数）を返す関数
+inline int p_rand(double lambda)
+{
+	lambda = exp(lambda) * ZP1rand();
+	int k = 0;
+	while (lambda > 1) {
+		lambda *= ZP1rand();
+		++k;
+	}
+	return k;
+}
 
 
 
 //0以上n以下の整数乱数生成
-inline int ZNirand(int n)
+inline unsigned int ZNrand(unsigned int n)
 {
-  return (int(genrand()%(n+1)));
+  return (genrand()%(n+1));
 };
+
+inline double ZNrand(double n)
+{
+  return (n*ZP1rand());
+};
+
+inline double Znrand(double n)
+{
+  return (n*Zp1rand());
+};
+
+//0以上n未満の整数乱数生成
+inline int Znirand(int n)
+{
+	return (int(genrand()%(n)));
+}
+
+inline int Znrand(int n)
+{
+	return (int(genrand()%(n)));
+}
+
+
+inline std::ptrdiff_t myrandom (std::ptrdiff_t i) { return genrand()%i;}
+
 
 
 //任意の確率[0,1]でtrueを返す関数
@@ -200,6 +273,31 @@ inline bool Prob0(double x)
 }
 
 
+
+
+//与えられたシーケンスの比率（確率）でtrueとなる要素の番号を返す
+template<typename Seq>
+size_t Prob(Seq seq)
+{
+  
+  //ルーレットを作る
+  double sum=0.0;
+  size_t i=0;
+  multimap<double,size_t> border_value;
+  for(auto s : seq) {
+    sum+=s;
+    border_value.insert(make_pair(sum, i++));
+  }
+  
+  //ダーツを投げる
+  const double dart=ZNrand(sum);
+  
+
+  //あたった場所を調べる
+  const auto b=border_value.lower_bound(dart);
+  return(b->second);
+  
+}
 
 
 
