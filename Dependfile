@@ -1,0 +1,15 @@
+./MyPointC2_iostream.o: MyPointC2_iostream.cpp MyPointC2_iostream.h \
+ MyPointC2.h
+./parameter.o: parameter.cpp parameter.h utility.h
+./random.o: random.cpp
+./utility.o: utility.cpp utility.h
+./MyPointC2_iostream_R.o: MyPointC2_iostream.cpp MyPointC2_iostream.h \
+ MyPointC2.h
+./parameter_R.o: parameter.cpp parameter.h utility.h
+./random_R.o: random.cpp
+./utility_R.o: utility.cpp utility.h
+./MyPointC2_iostream_D.o: MyPointC2_iostream.cpp MyPointC2_iostream.h \
+ MyPointC2.h
+./parameter_D.o: parameter.cpp parameter.h utility.h
+./random_D.o: random.cpp
+./utility_D.o: utility.cpp utility.h
