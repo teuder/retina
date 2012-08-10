@@ -1,5 +1,6 @@
 ./MyPointC2_iostream.o: MyPointC2_iostream.cpp MyPointC2_iostream.h \
  MyPointC2.h
+<<<<<<< HEAD
 ./parameter.o: parameter.cpp parameter.h utility.h
 ./random.o: random.cpp
 ./utility.o: utility.cpp utility.h
@@ -12,4 +13,54 @@
  MyPointC2.h
 ./parameter_D.o: parameter.cpp parameter.h utility.h
 ./random_D.o: random.cpp
+=======
+./current.o: current.cpp simulation.h main.h utility.h parameter.h \
+ MyKernel.h MyPointC2.h MySegmentC2.h MyConstruct_bbox_2.h \
+ MyConstruct_coord_iterator.h MyConstruct_point_2.h MyPointC2_iostream.h \
+ random.h SFMT/SFMT.h
+./main.o: main.cpp main.h simulation.h utility.h parameter.h MyKernel.h \
+ MyPointC2.h MySegmentC2.h MyConstruct_bbox_2.h \
+ MyConstruct_coord_iterator.h MyConstruct_point_2.h MyPointC2_iostream.h \
+ random.h SFMT/SFMT.h
+./parameter.o: parameter.cpp parameter.h utility.h
+./random.o: random.cpp random.h SFMT/SFMT.h
+./simulation.o: simulation.cpp simulation.h main.h utility.h parameter.h \
+ MyKernel.h MyPointC2.h MySegmentC2.h MyConstruct_bbox_2.h \
+ MyConstruct_coord_iterator.h MyConstruct_point_2.h MyPointC2_iostream.h \
+ random.h SFMT/SFMT.h
+./utility.o: utility.cpp utility.h
+./MyPointC2_iostream_R.o: MyPointC2_iostream.cpp MyPointC2_iostream.h \
+ MyPointC2.h
+./current_R.o: current.cpp simulation.h main.h utility.h parameter.h \
+ MyKernel.h MyPointC2.h MySegmentC2.h MyConstruct_bbox_2.h \
+ MyConstruct_coord_iterator.h MyConstruct_point_2.h MyPointC2_iostream.h \
+ random.h SFMT/SFMT.h
+./main_R.o: main.cpp main.h simulation.h utility.h parameter.h MyKernel.h \
+ MyPointC2.h MySegmentC2.h MyConstruct_bbox_2.h \
+ MyConstruct_coord_iterator.h MyConstruct_point_2.h MyPointC2_iostream.h \
+ random.h SFMT/SFMT.h
+./parameter_R.o: parameter.cpp parameter.h utility.h
+./random_R.o: random.cpp random.h SFMT/SFMT.h
+./simulation_R.o: simulation.cpp simulation.h main.h utility.h parameter.h \
+ MyKernel.h MyPointC2.h MySegmentC2.h MyConstruct_bbox_2.h \
+ MyConstruct_coord_iterator.h MyConstruct_point_2.h MyPointC2_iostream.h \
+ random.h SFMT/SFMT.h
+./utility_R.o: utility.cpp utility.h
+./MyPointC2_iostream_D.o: MyPointC2_iostream.cpp MyPointC2_iostream.h \
+ MyPointC2.h
+./current_D.o: current.cpp simulation.h main.h utility.h parameter.h \
+ MyKernel.h MyPointC2.h MySegmentC2.h MyConstruct_bbox_2.h \
+ MyConstruct_coord_iterator.h MyConstruct_point_2.h MyPointC2_iostream.h \
+ random.h SFMT/SFMT.h
+./main_D.o: main.cpp main.h simulation.h utility.h parameter.h MyKernel.h \
+ MyPointC2.h MySegmentC2.h MyConstruct_bbox_2.h \
+ MyConstruct_coord_iterator.h MyConstruct_point_2.h MyPointC2_iostream.h \
+ random.h SFMT/SFMT.h
+./parameter_D.o: parameter.cpp parameter.h utility.h
+./random_D.o: random.cpp random.h SFMT/SFMT.h
+./simulation_D.o: simulation.cpp simulation.h main.h utility.h parameter.h \
+ MyKernel.h MyPointC2.h MySegmentC2.h MyConstruct_bbox_2.h \
+ MyConstruct_coord_iterator.h MyConstruct_point_2.h MyPointC2_iostream.h \
+ random.h SFMT/SFMT.h
+>>>>>>> 6063a02c4cb7f18f3faf2a5acb7300e4408244f5
 ./utility_D.o: utility.cpp utility.h
