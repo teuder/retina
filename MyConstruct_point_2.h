@@ -28,12 +28,12 @@ public:
 
   Point_2
   operator()(CGAL::Origin o) const
-  { return MyPointC2(0, 0, 0); }
+  { return MyPointC2(0, 0); }
 
   Point_2
   operator()(const RT& x, const RT& y) const
   {
-    return MyPointC2(x, y, 0);
+    return MyPointC2(x, y);
   }
 
   Point_2
@@ -56,9 +56,9 @@ public:
   operator()(const RT& x, const RT& y, const RT& w) const
   {
     if(w != 1){
-      return MyPointC2(x/w, y/w, 0);
+      return MyPointC2(x/w, y/w);
     } else {
-      return MyPointC2(x,y, 0);
+      return MyPointC2(x,y);
     }
   }
 };

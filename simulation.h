@@ -102,6 +102,7 @@ class Simulation
   void InitPointsForMakeInitFile();
   void InitPointsRegular();
   void InitPointsRetina();
+  void InitPointsCheckered();
   
   void DevidePointsCircle();
   void DevidePointsStripe();
@@ -111,6 +112,7 @@ class Simulation
   void InitPeriodicPoints();
   
   void CalcVelocity();
+  void CalcVelocityByMembrane();
   void UpdatePosition();
   
   void Apoptosis();

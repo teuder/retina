@@ -6,7 +6,7 @@
 #include "glut.hpp"
 
 
-
+//GLUT
 void display(void)
 {
   glClear(GL_COLOR_BUFFER_BIT);
@@ -413,6 +413,64 @@ void Simulation::CacheVertices(){
   
   END;
 }
+
+
+
+
+
+
+
+void Simulation::CalcVelocityByMembrane()
+{
+  BGN;
+  if(dt.number_of_vertices()>1){
+    for(auto vv : vtx){    
+      for(auto v : vv){
+        double vx=0.0;
+        double vy=0.0;
+        const double x=v->point().x();
+        const double y=v->point().y();
+        const int c=v->point().color();
+        const int c1=v->point().color1();
+        
+        DT::Edge_circulator ei,e0;
+        do{
+          
+          if(ei.is_finite);
+          
+          //delaunay_edges
+          double T=t*FLAGS_H;
+          delauny << T << " " << dt.segment(e) << endl; 
+          
+          //voronoi edges
+          CGAL::Object obj;
+          obj=dt.dual(e);
+          K::Segment_2 segment;
+          K::Ray_2 ray;
+          K::Line_2 line;
+          if (assign(segment, obj)) {
+            voronoi << T << " " << segment << endl;
+          } else if (assign(ray, obj)) {
+            voronoi << T << " " << ray << endl;
+          }else if(assign(line, obj)){
+            voronoi << T << " " << line << endl;
+          }
+          
+          
+          
+        }while(++ei!=e0);
+        
+      }
+      
+    }
+  }
+  
+  END;
+}
+
+
+
+
 
 
 
@@ -909,6 +967,42 @@ void Simulation::InitFirstCell(){
 
 
 
+void Simulation::CacheEdges(){
+  BGN;
+  
+  str_t.push_back(tos(t*FLAGS_H,5,'0'));
+  
+  
+  //ドロネー、ボロノイ辺を記録する場合
+  
+  for(DT::Edge_iterator e=dt.finite_edges_begin();e!=dt.finite_edges_end();++e){
+    //delaunay_edges
+    double T=t*FLAGS_H;
+    delauny << T << " " << dt.segment(e) << endl; 
+    
+    //voronoi edges
+    CGAL::Object obj;
+    obj=dt.dual(e);
+    K::Segment_2 segment;
+    K::Ray_2 ray;
+    K::Line_2 line;
+    if (assign(segment, obj)) {
+      voronoi << T << " " << segment << endl;
+    } else if (assign(ray, obj)) {
+      voronoi << T << " " << ray << endl;
+    }else if(assign(line, obj)){
+      voronoi << T << " " << line << endl;
+    }
+  }
+  
+  
+  
+  
+  END;
+}
+
+
+
 
 
 
@@ -954,39 +1048,6 @@ void Simulation::FoutEdges(){
 
 
 
-void Simulation::CacheEdges(){
-  BGN;
-  
-  str_t.push_back(tos(t*FLAGS_H,5,'0'));
-  
-  
-  //ドロネー、ボロノイ辺を記録する場合
-  
-  for(DT::Edge_iterator e=dt.finite_edges_begin();e!=dt.finite_edges_end();++e){
-    //delaunay_edges
-    double T=t*FLAGS_H;
-    delauny << T << " " << dt.segment(e) << endl; 
-    
-    //voronoi edges
-    CGAL::Object obj;
-    obj=dt.dual(e);
-    K::Segment_2 segment;
-    K::Ray_2 ray;
-    K::Line_2 line;
-    if (assign(segment, obj)) {
-      voronoi << T << " " << segment << endl;
-    } else if (assign(ray, obj)) {
-      voronoi << T << " " << ray << endl;
-    }else if(assign(line, obj)){
-      voronoi << T << " " << line << endl;
-    }
-  }
-  
-  
-  
-  
-  END;
-}
 
 
 

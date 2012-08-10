@@ -29,10 +29,10 @@ int main(int argc, char** argv)
   
   //boost::timer t;
   Simulation sim;
-  sim.RunGrowingRetina();
-  //if(FLAGS_gr>0.0)    
-  //else if(!FLAGS_makeinit)      sim.Run(argc, argv);         //普通のシミュレーション
-  //else if(FLAGS_makeinit)  sim.RunMakeInitFile(); //細胞初期化ファイルを作る場合
+  
+  if(FLAGS_gr>0.0)    sim.RunGrowingRetina();
+  else if(!FLAGS_makeinit)      sim.Run(argc, argv);         //普通のシミュレーション
+  else if(FLAGS_makeinit)  sim.RunMakeInitFile(); //細胞初期化ファイルを作る場合
 
   
   //if(FLAGS_A00==0.0) cout << FLAGS_A00 << endl;

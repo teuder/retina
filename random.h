@@ -19,16 +19,16 @@ using namespace std;
 
 namespace myrand {
   
-  //‰~ü—¦
+  //å††å‘¨ç‡
   const double PI     = 3.14159265359;
   //extern const double PI;
-  //uint_32 genrand()‚ÌÅ‘å’l(2^32-1)
+  //uint_32 genrand()ã®æœ€å¤§å€¤(2^32-1)
   const double MAX = 4294967295.0;
 }
 
 
 
-/*#########‚¢‚ë‚ñ‚È—”‚Æ‚©Šm—¦‚ÌŠÖ”‚ÌéŒ¾##########*/
+/*#########ã„ã‚ã‚“ãªä¹±æ•°ã¨ã‹ç¢ºç‡ã®é–¢æ•°ã®å®£è¨€##########*/
 
 //
 inline unsigned int dev_urandom(){
@@ -42,7 +42,7 @@ inline unsigned int dev_urandom(){
   return x;
 }
 
-//—”‚Ì‰Šú‰»
+//ä¹±æ•°ã®åˆæœŸåŒ–
 inline unsigned int InitRand(unsigned int seed=0){	
   if(seed==0) seed=dev_urandom();
   init_gen_rand(seed);
@@ -50,7 +50,7 @@ inline unsigned int InitRand(unsigned int seed=0){
 }
 
 
-//Šî–{‚Æ‚È‚é®”—”[0,MAX]
+//åŸºæœ¬ã¨ãªã‚‹æ•´æ•°ä¹±æ•°[0,MAX]
 inline static unsigned int genrand(void)
 {
   return gen_rand32();
@@ -85,49 +85,49 @@ inline static double to_real4(uint32_t v)
   return (v+0.5) * (1.0/4294967295.5);  
 }
 
-//(0,1]‚ÌÀ”—”
+//(0,1]ã®å®Ÿæ•°ä¹±æ•°
 inline static double zP1rand(void)
 {
   return to_real4(gen_rand32());
 }
 
 
-////-1ˆÈã1ˆÈ‰º‚Ì—”‚ğ¶¬‚·‚é
+////-1ä»¥ä¸Š1ä»¥ä¸‹ã®ä¹±æ•°ã‚’ç”Ÿæˆã™ã‚‹
 //extern double MP1rand(void);
 
 
 
-////”CˆÓ‚ÌŠm—¦‚Åtrue‚ğ•Ô‚·ŠÖ”
+////ä»»æ„ã®ç¢ºç‡ã§trueã‚’è¿”ã™é–¢æ•°
 extern bool Prob1(double x);
 extern bool Prob0(double x);
 
 
-////Z‚Í0‚ğŠÜ‚Ş
-////z‚Í0‚ğŠÜ‚Ü‚È‚¢
+////Zã¯0ã‚’å«ã‚€
+////zã¯0ã‚’å«ã¾ãªã„
 
-////0ˆÈãnˆÈ‰º‚Ì®”—”¶¬
+////0ä»¥ä¸Šnä»¥ä¸‹ã®æ•´æ•°ä¹±æ•°ç”Ÿæˆ
 //extern int Znirand(int n);
 
 
-////0ˆÈãnˆÈ‰º‚Ì®”—”¶¬
+////0ä»¥ä¸Šnä»¥ä¸‹ã®æ•´æ•°ä¹±æ•°ç”Ÿæˆ
 //extern int ZNirand(int n);
 
-////0ˆÈãnˆÈ‰º‚ÌÀ”—”¶¬
+////0ä»¥ä¸Šnä»¥ä¸‹ã®å®Ÿæ•°ä¹±æ•°ç”Ÿæˆ
 //extern double ZNdrand(int n);
 //extern double ZNdrand(double n);
 
-////0‚æ‚è‘åAnˆÈ‰º‚ÌÀ”—”
+////0ã‚ˆã‚Šå¤§ã€nä»¥ä¸‹ã®å®Ÿæ•°ä¹±æ•°
 //extern double zNdrand(int n);
 //extern double zNdrand(double n);
 
-//2•ª‚Ì1‚ÌŠm—¦‚Åtrue‚Ü‚½‚Ífalse‚ğ•Ô‚·ŠÖ”
+//2åˆ†ã®1ã®ç¢ºç‡ã§trueã¾ãŸã¯falseã‚’è¿”ã™é–¢æ•°
 extern bool TFrand();
 
-//2•ª‚Ì1‚ÌŠm—¦‚Å+1‚Ü‚½‚Í-1‚ğ•Ô‚·ŠÖ”
+//2åˆ†ã®1ã®ç¢ºç‡ã§+1ã¾ãŸã¯-1ã‚’è¿”ã™é–¢æ•°
 extern double P1orM1rand();
 
 
-//-1ˆÈã1ˆÈ‰º‚Ì—”‚ğ¶¬‚·‚é
+//-1ä»¥ä¸Š1ä»¥ä¸‹ã®ä¹±æ•°ã‚’ç”Ÿæˆã™ã‚‹
 inline double MP1rand(void)
 {
 	return (2*(genrand()*(1.0/myrand::MAX))-1.0);
@@ -135,10 +135,10 @@ inline double MP1rand(void)
 
 
 
-//-n ‚©‚ç n ‚ÌŠÔ‚Ì®”‚Ì—” 
+//-n ã‹ã‚‰ n ã®é–“ã®æ•´æ•°ã®ä¹±æ•° 
 int iMPNrand(int n);
 
-//-n ‚©‚ç n ‚ÌŠÔ‚Ì—”[-n,n], -n‚Æn‚ğŠÜ‚Ş
+//-n ã‹ã‚‰ n ã®é–“ã®ä¹±æ•°[-n,n], -nã¨nã‚’å«ã‚€
 template<typename T>
 double dMPNrand(T n)
 {
@@ -146,7 +146,7 @@ double dMPNrand(T n)
 }
 
 
-//[n,m]‚ÌÀ”—”
+//[n,m]ã®å®Ÿæ•°ä¹±æ•°
 template<typename T>
 double NMrand(T n,T m)
 {
@@ -160,7 +160,7 @@ double dNMrand(T n,T m)
 }
 
 
-//[n,m]‚Ì®”—”
+//[n,m]ã®æ•´æ•°ä¹±æ•°
 inline int iNMrand(int n,int m)
 {
   return(genrand()%(m-n)+n);
@@ -170,8 +170,8 @@ inline int iNMrand(int n,int m)
 
 
 
-//•W€³‹K—”
-//•W€³‹K—”
+//æ¨™æº–æ­£è¦ä¹±æ•°
+//æ¨™æº–æ­£è¦ä¹±æ•°
 inline double NormRand()
 {
 	double t=sqrt(-2.0 * log(1-Zp1rand()));
@@ -180,22 +180,22 @@ inline double NormRand()
 }
 
 
-//ˆê”Ê“I‚È•½‹Ï’lmuA•W€•Î·sigma‚Ì³‹K•ª•z‚ğ‚·‚é—”
-//‚±‚ê‚Í•W€³‹K—”‚ğ—˜—p‚µ‚Äì‚é
-//ˆê”Ê³‹K•ª•zf(x)‚ª‚ ‚Á‚½‚Æ‚«
-//x‚ğ•Ï”•ÏŠ·‚µ
+//ä¸€èˆ¬çš„ãªå¹³å‡å€¤muã€æ¨™æº–åå·®sigmaã®æ­£è¦åˆ†å¸ƒã‚’ã™ã‚‹ä¹±æ•°
+//ã“ã‚Œã¯æ¨™æº–æ­£è¦ä¹±æ•°ã‚’åˆ©ç”¨ã—ã¦ä½œã‚‹
+//ä¸€èˆ¬æ­£è¦åˆ†å¸ƒf(x)ãŒã‚ã£ãŸã¨ã
+//xã‚’å¤‰æ•°å¤‰æ›ã—
 //z = (x - mu)/sigma
-//‚Æ‚µ‚Ä“¾‚ç‚ê‚é•ª•zg(z)‚Í•W€³‹K•ª•z‚Æ‚È‚é
-//‚Â‚Ü‚èA‚±‚ê‚ğ‹t•ÏŠ·‚·‚é‚Æ
+//ã¨ã—ã¦å¾—ã‚‰ã‚Œã‚‹åˆ†å¸ƒg(z)ã¯æ¨™æº–æ­£è¦åˆ†å¸ƒã¨ãªã‚‹
+//ã¤ã¾ã‚Šã€ã“ã‚Œã‚’é€†å¤‰æ›ã™ã‚‹ã¨
 //x = sigma*x + mu
-//‚Å‚ ‚è
-//•W€³‹K•ª•z‚ğˆê”Ê³‹K•ª•z‚É•ÏŠ·‚Å‚«‚é
+//ã§ã‚ã‚Š
+//æ¨™æº–æ­£è¦åˆ†å¸ƒã‚’ä¸€èˆ¬æ­£è¦åˆ†å¸ƒã«å¤‰æ›ã§ãã‚‹
 inline double NormRand(double mu, double sigma)
 {
 	return(sigma*NormRand()+mu);
 }
 
-//•½‹Ï’lmuA•W€•Î·sigma‚Ì³‹K•ª•z
+//å¹³å‡å€¤muã€æ¨™æº–åå·®sigmaã®æ­£è¦åˆ†å¸ƒ
 //template<typename T1,typename T2>
 //double NormRand(T1 mu, T2 sigma)
 //{
@@ -205,8 +205,8 @@ inline double NormRand(double mu, double sigma)
 
 
 
-//•½‹Ï’llambda‚Ìƒ|ƒƒ\ƒ“—”i®”j‚ğ•Ô‚·ŠÖ”
-//•½‹Ï’llambda‚Ìƒ|ƒƒ\ƒ“—”i®”j‚ğ•Ô‚·ŠÖ”
+//å¹³å‡å€¤lambdaã®ãƒãƒ¯ã‚½ãƒ³ä¹±æ•°ï¼ˆæ•´æ•°ï¼‰ã‚’è¿”ã™é–¢æ•°
+//å¹³å‡å€¤lambdaã®ãƒãƒ¯ã‚½ãƒ³ä¹±æ•°ï¼ˆæ•´æ•°ï¼‰ã‚’è¿”ã™é–¢æ•°
 inline int p_rand(double lambda)
 {
 	lambda = exp(lambda) * ZP1rand();
@@ -220,7 +220,7 @@ inline int p_rand(double lambda)
 
 
 
-//0ˆÈãnˆÈ‰º‚Ì®”—”¶¬
+//0ä»¥ä¸Šnä»¥ä¸‹ã®æ•´æ•°ä¹±æ•°ç”Ÿæˆ
 inline unsigned int ZNrand(unsigned int n)
 {
   return (genrand()%(n+1));
@@ -236,7 +236,7 @@ inline double Znrand(double n)
   return (n*Zp1rand());
 };
 
-//0ˆÈãn–¢–‚Ì®”—”¶¬
+//0ä»¥ä¸Šnæœªæº€ã®æ•´æ•°ä¹±æ•°ç”Ÿæˆ
 inline int Znirand(int n)
 {
 	return (int(genrand()%(n)));
@@ -252,20 +252,20 @@ inline std::ptrdiff_t myrandom (std::ptrdiff_t i) { return genrand()%i;}
 
 
 
-//”CˆÓ‚ÌŠm—¦[0,1]‚Åtrue‚ğ•Ô‚·ŠÖ”
+//ä»»æ„ã®ç¢ºç‡[0,1]ã§trueã‚’è¿”ã™é–¢æ•°
 inline bool Prob(double x)
 {
   if(Zp1rand()<x) return true;
   else return false;
 }
 
-////”CˆÓ‚ÌŠm—¦‚Åtrue‚ğ•Ô‚·ŠÖ”
+////ä»»æ„ã®ç¢ºç‡ã§trueã‚’è¿”ã™é–¢æ•°
 inline bool Prob1(double x)
 {
   if(Zp1rand()<x) return true;
   else return false;
 }
-////”CˆÓ‚ÌŠm—¦‚Åfalse‚ğ•Ô‚·ŠÖ”
+////ä»»æ„ã®ç¢ºç‡ã§falseã‚’è¿”ã™é–¢æ•°
 inline bool Prob0(double x)
 {
   if(Zp1rand()<x) return false;
@@ -275,12 +275,12 @@ inline bool Prob0(double x)
 
 
 
-//—^‚¦‚ç‚ê‚½ƒV[ƒPƒ“ƒX‚Ì”ä—¦iŠm—¦j‚Åtrue‚Æ‚È‚é—v‘f‚Ì”Ô†‚ğ•Ô‚·
+//ä¸ãˆã‚‰ã‚ŒãŸã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®æ¯”ç‡ï¼ˆç¢ºç‡ï¼‰ã§trueã¨ãªã‚‹è¦ç´ ã®ç•ªå·ã‚’è¿”ã™
 template<typename Seq>
 size_t Prob(Seq seq)
 {
   
-  //ƒ‹[ƒŒƒbƒg‚ğì‚é
+  //ãƒ«ãƒ¼ãƒ¬ãƒƒãƒˆã‚’ä½œã‚‹
   double sum=0.0;
   size_t i=0;
   multimap<double,size_t> border_value;
@@ -289,11 +289,11 @@ size_t Prob(Seq seq)
     border_value.insert(make_pair(sum, i++));
   }
   
-  //ƒ_[ƒc‚ğ“Š‚°‚é
+  //ãƒ€ãƒ¼ãƒ„ã‚’æŠ•ã’ã‚‹
   const double dart=ZNrand(sum);
   
 
-  //‚ ‚½‚Á‚½êŠ‚ğ’²‚×‚é
+  //ã‚ãŸã£ãŸå ´æ‰€ã‚’èª¿ã¹ã‚‹
   const auto b=border_value.lower_bound(dart);
   return(b->second);
   
